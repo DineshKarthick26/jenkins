@@ -1,0 +1,18 @@
+services:
+  db:
+    image: mysql:8
+    environment:
+      DB_PASSWORD: db123
+    ports:
+      - "3306:3306"
+    volumes:
+      - MY_DB1:/var/lib/mysql
+
+volumes:
+  MY_DB1:
+
+
+
+
+
+
