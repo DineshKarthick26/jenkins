@@ -1,6 +1,0 @@
-services:
- nginx-app:
-  image: nginx
-  ports:
-    - "8082:80"
-
