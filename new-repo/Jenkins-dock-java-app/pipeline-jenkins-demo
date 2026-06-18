@@ -4,62 +4,61 @@ pipeline {
     stages {
         stage('Clone Github Repository') {
             steps {
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/theshubhamgour/jenkins-tutorial.git'
-                sh 'pwd'
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/DineshKarthick26/jenkins.git'
             }
         }
         stage('Build') {
             steps {
-                dir('3-java-jenkins-docker-app') {
+                dir('new-repo/Jenkins-dock-java-app') {
                     sh 'mvn clean package'
                 }
             }
         }
         stage('Test') {
             steps {
-                dir('3-java-jenkins-docker-app') {
+                dir('new-repo/Jenkins-dock-java-app') {
                     sh 'mvn test'
                 }
             }
         }
         stage('Compile') {
             steps {
-                dir('3-java-jenkins-docker-app') {
+                dir('new-repo/Jenkins-dock-java-app') {
                     sh 'mvn compile'
                 }
             }
         }    
         stage('Docker image Build') {
             steps {
-                dir('3-java-jenkins-docker-app') {
+                dir('new-repo/Jenkins-dock-java-app') {
                     sh 'docker build -t java-jenkins-docker:latest .'
                 }
             }
         } 
         stage('Docker image Tag') {
             steps {
-                dir('3-java-jenkins-docker-app') {
-                    sh 'docker tag java-jenkins-docker:latest theshubhamgour/java-jenkins-docker:latest'
+                dir('new-repo/Jenkins-dock-java-app') {
+                    sh 'docker tag java-jen-dock:latest dineshk26/java-jen-dock'
                 }
             }
         }   
         stage('Docker Login ') {
             steps {
-                dir('3-java-jenkins-docker-app') {
-                    sh 'docker login -u theshubhamgour -p redhat123#'
+                dir('new-repo/Jenkins-dock-java-app') {
+                    sh 'docker login -u dineshk26 -p DK@docker26'
                 }
             }
         }
         stage('Docker Image Push ') {
             steps {
-                dir('3-java-jenkins-docker-app') {
-                    sh 'docker push theshubhamgour/java-jenkins-docker:latest'
+                dir('new-repo/Jenkins-dock-java-app') {
+                    sh 'docker push dineshk26/java-jen-dock'
                 }
             }
         }
         stage('Clean Work Space ') {
             steps {
-                dir('3-java-jenkins-docker-app') {
+                dir('new-repo/Jenkins-dock-java-app') {
                     cleanWs()
                 }
             }
