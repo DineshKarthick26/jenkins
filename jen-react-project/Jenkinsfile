@@ -1,5 +1,7 @@
 pipeline {
     agent any 
+    triggers {
+        githubPush()
     environment {
         CREDENTIALS = credentials('dineshk26')
         IMAGE = 'dineshk26/my_folio'
