@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} - {{ PORTFOLIO_OWNER }}{% endblock %}
+
+{% block content %}
+<div class="project-hero" style="--gradient: {{ project.gradient }};">
+    <div class="project-hero-content">
+        <a href="/" class="back-link">← Back to Home</a>
+        <div class="project-hero-icon">{{ project.image }}</div>
+        <h1 class="project-hero-title">{{ project.title }}</h1>
+        <p class="project-hero-description">{{ project.description }}</p>
+        <div class="project-hero-actions">
+            {% if project.live %}
+            <a href="{{ project.live }}" target="_blank" class="btn btn-primary">
+                View Live Site
+            </a>
+            {% endif %}
+            {% if project.github %}
+            <a href="{{ project.github }}" target="_blank" class="btn btn-secondary">
+                View on GitHub
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="project-content">
+    <div class="project-container">
+        <div class="project-main">
+            <div class="project-details-section">
+                <h2>Project Overview</h2>
+                <p>{{ project.details }}</p>
+            </div>
+
+            <div class="features-section">
+                <h2>Key Features</h2>
+                <ul class="features-list">
+                    {% for feature in project.features %}
+                    <li>{{ feature }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="tech-stack-section">
+                <h2>Technologies Used</h2>
+                <div class="tech-stack">
+                    {% for tech in project.tags %}
+                    <div class="tech-item">
+                        <span class="tech-badge">{{ tech }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <aside class="project-sidebar">
+            <div class="sidebar-card">
+                <h3>📋 Project Info</h3>
+                <div class="sidebar-item">
+                    <span class="label">Title:</span>
+                    <span class="value">{{ project.title }}</span>
+                </div>
+                <div class="sidebar-item">
+                    <span class="label">Status:</span>
+                    <span class="value">Completed</span>
+                </div>
+                <div class="sidebar-item">
+                    <span class="label">Technologies:</span>
+                    <span class="value">{{ project.tags|length }} used</span>
+                </div>
+            </div>
+
+            <div class="sidebar-card featured">
+                <h3>🔗 Links</h3>
+                {% if project.live %}
+                <a href="{{ project.live }}" target="_blank" class="sidebar-link">
+                    ↗ Live Demo
+                </a>
+                {% endif %}
+                {% if project.github %}
+                <a href="{{ project.github }}" target="_blank" class="sidebar-link">
+                    ↗ Source Code
+                </a>
+                {% endif %}
+            </div>
+
+            <div class="sidebar-card">
+                <h3>✨ Highlights</h3>
+                <ul class="highlights-list">
+                    <li>Production-ready code</li>
+                    <li>Fully responsive</li>
+                    <li>Performance optimized</li>
+                    <li>Well documented</li>
+                    <li>User friendly</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<section class="related-projects">
+    <h2>Other Projects</h2>
+    <div class="related-grid">
+        {% for key, p in PROJECTS.items() %}
+            {% if p.slug != project.slug %}
+            <a href="/project/{{ p.slug }}" class="related-card" style="--gradient: {{ p.gradient }};">
+                <div class="related-gradient"></div>
+                <div class="related-icon">{{ p.image }}</div>
+                <h3>{{ p.title }}</h3>
+                <p>{{ p.description }}</p>
+            </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

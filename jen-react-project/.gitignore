@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Environment variables
+.env
+
+# Flask
+instance/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+*.tar
+*.log
+
+# Jenkins (optional local artifacts)
+workspace/

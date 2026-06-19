@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ PORTFOLIO_OWNER }} - Portfolio{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-logo">
+                <span class="logo-icon">→</span>
+                <span class="logo-text">Portfolio</span>
+            </a>
+            <nav class="navbar-nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/#projects" class="nav-link">Projects</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 {{ PORTFOLIO_OWNER }}. All rights reserved.</p>
+            <div class="footer-social">
+                {% if CONTACT.github %}
+                <a href="{{ CONTACT.github }}" target="_blank" title="GitHub">GitHub</a>
+                {% endif %}
+                {% if CONTACT.linkedin %}
+                <a href="{{ CONTACT.linkedin }}" target="_blank" title="LinkedIn">LinkedIn</a>
+                {% endif %}
+                {% if CONTACT.twitter %}
+                <a href="{{ CONTACT.twitter }}" target="_blank" title="Twitter">Twitter</a>
+                {% endif %}
+                {% if CONTACT.email %}
+                <a href="mailto:{{ CONTACT.email }}" title="Email">Email</a>
+                {% endif %}
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

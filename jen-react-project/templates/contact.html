@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - {{ PORTFOLIO_OWNER }}{% endblock %}
+
+{% block content %}
+<div class="page-hero contact-hero">
+    <div class="page-hero-content">
+        <h1>Get In Touch</h1>
+        <p>Let's discuss your next project</p>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="contact-container">
+        <div class="contact-main">
+            <section class="contact-section">
+                <h2>Contact Information</h2>
+                <p>Here are the best ways to reach me. I typically respond within 24-48 hours.</p>
+                
+                <div class="contact-info-grid">
+                    {% if CONTACT.email %}
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">📧</div>
+                        <div class="contact-info-content">
+                            <h3>Email</h3>
+                            <a href="mailto:{{ CONTACT.email }}">{{ CONTACT.email }}</a>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if CONTACT.location %}
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">📍</div>
+                        <div class="contact-info-content">
+                            <h3>Location</h3>
+                            <p>{{ CONTACT.location }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">💬</div>
+                        <div class="contact-info-content">
+                            <h3>Response Time</h3>
+                            <p>24-48 hours</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-section">
+                <h2>Connect With Me</h2>
+                <p>Find me on these platforms:</p>
+                
+                <div class="social-links">
+                    {% if CONTACT.github %}
+                    <a href="{{ CONTACT.github }}" target="_blank" class="social-link github">
+                        <span class="social-icon">🐙</span>
+                        <span class="social-name">GitHub</span>
+                    </a>
+                    {% endif %}
+
+                    {% if CONTACT.linkedin %}
+                    <a href="{{ CONTACT.linkedin }}" target="_blank" class="social-link linkedin">
+                        <span class="social-icon">💼</span>
+                        <span class="social-name">LinkedIn</span>
+                    </a>
+                    {% endif %}
+
+                    {% if CONTACT.twitter %}
+                    <a href="{{ CONTACT.twitter }}" target="_blank" class="social-link twitter">
+                        <span class="social-icon">𝕏</span>
+                        <span class="social-name">Twitter</span>
+                    </a>
+                    {% endif %}
+
+                    {% if CONTACT.email %}
+                    <a href="mailto:{{ CONTACT.email }}" class="social-link email">
+                        <span class="social-icon">📧</span>
+                        <span class="social-name">Email</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </section>
+
+            <section class="contact-section">
+                <h2>What I'm Looking For</h2>
+                <ul class="opportunities-list">
+                    <li>Full-time or contract opportunities</li>
+                    <li>Freelance projects</li>
+                    <li>Consulting and code reviews</li>
+                    <li>Mentoring and knowledge sharing</li>
+                    <li>Collaborations on interesting ideas</li>
+                </ul>
+            </section>
+        </div>
+
+        <aside class="contact-sidebar">
+            <div class="sidebar-card featured">
+                <h3>💌 Quick Message</h3>
+                <p>Prefer to send a quick message?</p>
+                <a href="mailto:{{ CONTACT.email }}" class="btn btn-primary">Send Email</a>
+            </div>
+
+            <div class="sidebar-card">
+                <h3>📌 Quick Facts</h3>
+                <ul class="facts-list">
+                    <li>✓ Available for projects</li>
+                    <li>✓ Remote-friendly</li>
+                    <li>✓ Quick responses</li>
+                    <li>✓ Timezone friendly</li>
+                    <li>✓ Flexible rates</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}About - {{ PORTFOLIO_OWNER }}{% endblock %}
+
+{% block content %}
+<div class="page-hero about-hero">
+    <div class="page-hero-content">
+        <h1>About Me</h1>
+        <p>Learn more about my background and expertise</p>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="about-container">
+        <section class="about-section">
+            <h2>Who I Am</h2>
+            <p>
+                I'm a full-stack developer passionate about building beautiful, 
+                functional web applications. With expertise in both frontend and backend 
+                technologies, I help businesses bring their ideas to life.
+            </p>
+            <p>
+                I believe in writing clean, maintainable code and creating user experiences 
+                that are intuitive and delightful. Every project is an opportunity to learn 
+                something new and solve interesting problems.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>My Journey</h2>
+            <p>
+                I started my development journey with a passion for creating interactive 
+                web experiences. Over the years, I've worked on diverse projects ranging 
+                from small startups to established companies.
+            </p>
+            <p>
+                This experience has taught me the importance of clean architecture, 
+                scalability, and user-centric design. I'm constantly learning new 
+                technologies and best practices in the field.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>What I Do</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Web Design</h3>
+                    <p>Creating beautiful, responsive user interfaces with modern design principles</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Backend Development</h3>
+                    <p>Building robust, scalable server applications and APIs</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Full-Stack Solutions</h3>
+                    <p>End-to-end development from concept to deployment</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Maintenance & Support</h3>
+                    <p>Ongoing support and optimization for existing applications</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>Skills & Expertise</h2>
+            <div class="expertise-grid">
+                {% for category, skills in SKILLS.items() %}
+                <div class="expertise-card">
+                    <h3>{{ category }}</h3>
+                    <ul class="skill-list">
+                        {% for skill in skills %}
+                        <li>{{ skill }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>Let's Connect</h2>
+            <p>
+                I'm always interested in hearing about new projects and opportunities. 
+                Feel free to reach out to discuss your next project.
+            </p>
+            <div class="contact-links">
+                {% if CONTACT.email %}
+                <a href="mailto:{{ CONTACT.email }}" class="contact-link">
+                    📧 Email
+                </a>
+                {% endif %}
+                {% if CONTACT.linkedin %}
+                <a href="{{ CONTACT.linkedin }}" target="_blank" class="contact-link">
+                    💼 LinkedIn
+                </a>
+                {% endif %}
+                {% if CONTACT.github %}
+                <a href="{{ CONTACT.github }}" target="_blank" class="contact-link">
+                    🐙 GitHub
+                </a>
+                {% endif %}
+                {% if CONTACT.twitter %}
+                <a href="{{ CONTACT.twitter }}" target="_blank" class="contact-link">
+                    𝕏 Twitter
+                </a>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
