@@ -1,0 +1,58 @@
+pipeline {
+    agent any 
+    environment {
+        CREDENTIALS = credentials('dineshk26')
+        IMAGE = 'dineshk26/my_folio'
+        TAG = "v${BUILD_NUMBER}"
+    }
+
+    stages {
+        stage ('checkout') {
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/DineshKarthick26/jenkins.git'
+            }
+        }
+        stage ('local compiling') {
+            steps {
+                dir('jen-react-project') {
+                  sh ' echo Hello'
+                }
+            }
+        } 
+        stage ('lint') {
+            steps {
+                dir('jen-react-project') {
+                  sh 'python3 -m pip3 install flake8 --break-system-packages'
+                  sh 'flake8 . || true'
+                }
+            }
+        }
+        stage ('docker build') {
+            steps {
+                dir('jen-react-project') {
+                  sh 'docker build -t $IMAGE:$TAG .'
+                }
+            }
+        }
+        stage ('docker push') {
+            steps { 
+                  sh ''' echo $CREDENTIALS_PSW | docker login -u $CREDENTIALS_USR --password-stdin
+                         docker push $IMAGE:$TAG '''
+            }
+        }
+        stage ('docker build') {
+            steps {
+                  sh ''' docker stop myfolio || true
+                         docker rm myfolio || true
+                         docker run -d -p 5000:5000 $IMAGE:$TAG '''
+            }
+    }
+    post {
+        success {
+            echo 'Build successfully'
+        }
+        failure {
+            echo 'build has failed'
+        }
+    }
+}

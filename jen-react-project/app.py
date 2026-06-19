@@ -1,14 +1,12 @@
-from dotenv import load_dotenv
-load_dotenv()
 from flask import Flask, render_template, url_for, jsonify
 import os
 
 app = Flask(__name__)
 
 # Personal Portfolio Data
-PORTFOLIO_OWNER = os.getenv("PORTFOLIO_OWNER", "Your Name")
-PORTFOLIO_TITLE = os.getenv("PORTFOLIO_TITLE", "Full Stack Developer")
-PORTFOLIO_BIO = os.getenv("PORTFOLIO_BIO", "Building amazing digital experiences with modern technologies")
+PORTFOLIO_OWNER = "Dinesh Karthick"
+PORTFOLIO_TITLE = "DevOps Engineer"
+PORTFOLIO_BIO = "DevOps and Cloud Security Enthusiast"
 
 # Your Projects
 PROJECTS = {
