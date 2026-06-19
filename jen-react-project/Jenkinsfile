@@ -11,7 +11,8 @@ pipeline {
     stages {
         stage ('checkout') {
             steps {
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/DineshKarthick26/jenkins.git'
+                git branch: 'main',
+                    url: 'https://github.com/DineshKarthick26/jenkins.git'
             }
         }
         stage ('local compiling') {
