@@ -2,6 +2,7 @@ pipeline {
     agent any 
     triggers {
         githubPush()
+    }
     environment {
         CREDENTIALS = credentials('dineshk26')
         IMAGE = 'dineshk26/my_folio'
@@ -25,7 +26,7 @@ pipeline {
         stage ('lint') {
             steps {
                 dir('jen-react-project') {
-                  sh 'python3 -m pip3 install flake8 --break-system-packages'
+                  sh 'python3 -m pip install flake8 --break-system-packages'
                   sh 'flake8 . || true'
                 }
             }
@@ -43,12 +44,13 @@ pipeline {
                          docker push $IMAGE:$TAG '''
             }
         }
-        stage ('docker build') {
+        stage ('docker deploy') {
             steps {
                   sh ''' docker stop myfolio || true
                          docker rm myfolio || true
-                         docker run -d -p 5000:5000 $IMAGE:$TAG '''
+                         docker run -d -p 5000:5000 --name=my_portfolio $IMAGE:$TAG '''
             }
+        }
     }
     post {
         success {
