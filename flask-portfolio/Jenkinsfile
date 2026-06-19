@@ -7,6 +7,7 @@ pipeline {
 
     stages {
         stage('Checkout Code') {
+            git branch: 'main'
             steps {
                 git 'https://github.com/DineshKarthick26/jenkins.git'
             }
