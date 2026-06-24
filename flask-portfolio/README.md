@@ -5,8 +5,6 @@ It is built to showcase Flask web development with a professional DevOps-themed 
 
 ---
 
-<img width="1440" height="751" alt="Screenshot 2025-11-04 at 8 56 56 PM" src="https://github.com/user-attachments/assets/92bfa45f-0d2a-42b3-8767-24bdec967184" />
-
 ## 🚀 Features
 - Flask-powered backend
 - Beautiful responsive dark neon UI
