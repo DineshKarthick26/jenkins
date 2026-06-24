@@ -1,6 +1,6 @@
 # 🎨 Flask Portfolio Web App
 
-This repository contains a modern, responsive **Flask-based web portfolio** project by [Shubham Gour Tech](https://www.youtube.com/shubhamgourtech).  
+This repository contains a modern, responsive **Flask-based web portfolio** project   
 It is built to showcase Flask web development with a professional DevOps-themed UI.
 
 ---
