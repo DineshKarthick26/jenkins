@@ -32,8 +32,6 @@ Then open [http://localhost:5000](http://localhost:5000)
 
 ---
 
-<img width="1440" height="809" alt="Screenshot 2025-11-04 at 8 59 37 PM" src="https://github.com/user-attachments/assets/18c958b8-e4b3-45ef-875b-75eccfe2f646" />
-
 
 ## 🐳 Run with Docker
 ```bash
@@ -42,8 +40,6 @@ docker run -p 5000:5000 theshubhamgour/flask-portfolio
 ```
 
 ---
-<img width="1440" height="813" alt="Screenshot 2025-11-04 at 9 00 03 PM" src="https://github.com/user-attachments/assets/fbc73e3e-5141-4984-8820-d4be0848d536" />
-
 ## 📁 Folder Structure
 ```
 flask-portfolio/
@@ -63,17 +59,4 @@ flask-portfolio/
     ├── style.css
     ├── favicon.ico
     └── img/    # Add your photos here
-```
-
----
-
-## 👨‍💻 Author
-**Shubham Gour**  
-Release Engineer | DevOps | Cloud | YouTuber  
-🔗 [LinkedIn](https://www.linkedin.com/in/theshubhamgour/)  
-🎥 [YouTube](https://www.youtube.com/shubhamgourtech)
-
----
-
-## 📜 License
-MIT License © 2025 Shubham Gour Tech
+'''
